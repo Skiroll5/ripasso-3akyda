@@ -3,24 +3,36 @@ import json
 import os
 
 def parse_csv(filepath):
+    """Parse CSV and return (subtitle, questions) tuple."""
     questions = []
-    current_q = {"question": "", "options": []}
+    subtitle = ""
+    current_q = {"question": "", "options": [], "comment": ""}
     
     with open(filepath, 'r', encoding='utf-8-sig') as f:
         lines = [l.strip() for l in f.readlines()]
         
     for line in lines:
+        # Handle directives
+        if line.startswith("# SUBTITLE:"):
+            subtitle = line[11:].strip()
+            continue
+        if line.startswith("# COMMENT:"):
+            current_q["comment"] = line[10:].strip()
+            continue
+            
         if not line:
             if current_q["question"]:
+                # Remove empty comment field if not used
+                if not current_q["comment"]:
+                    del current_q["comment"]
                 questions.append(current_q)
-                current_q = {"question": "", "options": []}
+                current_q = {"question": "", "options": [], "comment": ""}
             continue
             
         if not current_q["question"]:
             current_q["question"] = line
         else:
             # Parse Option: "Text,Boolean"
-            # Split only on the last comma in case text contains commas
             parts = line.rsplit(',', 1)
             if len(parts) == 2:
                 opt_text = parts[0].strip()
@@ -35,22 +47,26 @@ def parse_csv(filepath):
     
     # Add last one if exists
     if current_q["question"]:
+        if not current_q["comment"]:
+            del current_q["comment"]
         questions.append(current_q)
         
-    return questions
+    return subtitle, questions
 
 def main():
     csv_files = sorted(glob.glob("*.csv"))
     all_data = {}
     
     for f in csv_files:
-        # Use filename without extension as Quiz Name
         quiz_name = os.path.splitext(os.path.basename(f))[0]
         print(f"Processing: {quiz_name}")
         try:
-            questions = parse_csv(f)
+            subtitle, questions = parse_csv(f)
             if questions:
-                all_data[quiz_name] = questions
+                all_data[quiz_name] = {
+                    "subtitle": subtitle,
+                    "questions": questions
+                }
         except Exception as e:
             print(f"Error parsing {f}: {e}")
             
