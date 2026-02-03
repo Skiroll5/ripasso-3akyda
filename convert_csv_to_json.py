@@ -40,7 +40,7 @@ def parse_csv(filepath):
     return questions
 
 def main():
-    csv_files = glob.glob("*.csv")
+    csv_files = sorted(glob.glob("*.csv"))
     all_data = {}
     
     for f in csv_files:
