@@ -1,4 +1,1939 @@
 const QUIZ_DATA = { 
+  "أسئلة عقائدية شاملة": {
+    "subtitle": "",
+    "questions": [
+      {
+        "question": "الإيمان بالمسيحية هو إيمان بإله واحد وليس ثلاثة آلهة.",
+        "options": [
+          {
+            "text": "صح",
+            "correct": true,
+            "comment": "المسيحية ديانة توحيدية تؤمن بإله واحد مثلث الأقانيم."
+          },
+          {
+            "text": "خطأ",
+            "correct": false,
+            "comment": ""
+          }
+        ]
+      },
+      {
+        "question": "'الجوهر' في الثالوث يعني الخصائص الذاتية التي تميز كل أقنوم عن الآخر.",
+        "options": [
+          {
+            "text": "صح",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "خطأ",
+            "correct": true,
+            "comment": "الجوهر هو الطبيعة الإلهية الواحدة المشتركة."
+          }
+        ]
+      },
+      {
+        "question": "الأقنوم هو كائن حي، ذو تميز غير منفصل.",
+        "options": [
+          {
+            "text": "صح",
+            "correct": true,
+            "comment": "كل أقنوم متميز في خاصيته الأقنومية لكنه غير منفصل في الجوهر."
+          },
+          {
+            "text": "خطأ",
+            "correct": false,
+            "comment": ""
+          }
+        ]
+      },
+      {
+        "question": "التثليث في المسيحية هو تثليث ذات، وعقل، وحياة.",
+        "options": [
+          {
+            "text": "صح",
+            "correct": true,
+            "comment": "الآب (الذات)، الابن (العقل/الكلمة)، الروح القدس (الحياة)."
+          },
+          {
+            "text": "خطأ",
+            "correct": false,
+            "comment": ""
+          }
+        ]
+      },
+      {
+        "question": "الابن في الثالوث أصغر من الآب في الزمن.",
+        "options": [
+          {
+            "text": "صح",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "خطأ",
+            "correct": true,
+            "comment": "هم متساوون وأزليون."
+          }
+        ]
+      },
+      {
+        "question": "كلمة 'أقنوم' هي كلمة من أصل:",
+        "options": [
+          {
+            "text": "يوناني",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "سرياني",
+            "correct": true,
+            "comment": "تعني الشخص أو الذات القائمة."
+          },
+          {
+            "text": "قبطي",
+            "correct": false,
+            "comment": ""
+          }
+        ]
+      },
+      {
+        "question": "الخاصية الأقنومية للروح القدس هي:",
+        "options": [
+          {
+            "text": "الولادة",
+            "correct": false,
+            "comment": "خاصية الابن."
+          },
+          {
+            "text": "الانبثاق",
+            "correct": true,
+            "comment": "الروح القدس منبثق من الآب."
+          },
+          {
+            "text": "الأبوة",
+            "correct": false,
+            "comment": "خاصية الآب."
+          }
+        ]
+      },
+      {
+        "question": "الجوهر الإلهي واحد، ولكننا نؤمن بثلاثة أقانيم هم:",
+        "options": [
+          {
+            "text": "الروح والجسد والنفس",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "الآب والابن والروح القدس",
+            "correct": true,
+            "comment": "هذا هو الثالوث القدوس."
+          },
+          {
+            "text": "السماء والأرض والملكوت",
+            "correct": false,
+            "comment": ""
+          }
+        ]
+      },
+      {
+        "question": "علاقة الأقانيم ببعضها هي علاقة:",
+        "options": [
+          {
+            "text": "انفصال مكاني",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "تمايز بلا انفصال",
+            "correct": true,
+            "comment": "متميزون في الخواص ومتحدون في الجوهر."
+          },
+          {
+            "text": "تسلسل زمني",
+            "correct": false,
+            "comment": ""
+          }
+        ]
+      },
+      {
+        "question": "الإيمان بالتوحيد المسيحي يسمى توحيداً:",
+        "options": [
+          {
+            "text": "مجرداً (جامداً)",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "جامعاً (حياً)",
+            "correct": true,
+            "comment": "وحدانية جامعة مانعة، غنية بالأقانيم."
+          },
+          {
+            "text": "حسابياً",
+            "correct": false,
+            "comment": ""
+          }
+        ]
+      },
+      {
+        "question": "التجسد الإلهى يعنى أن الله أخذ جسداً حقيقياً وشابهنا في كل شيء ما خلا الخطية وحدها.",
+        "options": [
+          {
+            "text": "صح",
+            "correct": true,
+            "comment": " شابهنا في كل شيء ما خلا الخطية."
+          },
+          {
+            "text": "خطأ",
+            "correct": false,
+            "comment": ""
+          }
+        ]
+      },
+      {
+        "question": "التجسد مجرد 'ظهور' مؤقت لله في هيئة إنسان ثم انتهى.",
+        "options": [
+          {
+            "text": "صح",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "خطأ",
+            "correct": true,
+            "comment": "هو اتحاد دائم، والمسيح احتفظ بجسده بعد القيامة والصعود."
+          }
+        ]
+      },
+      {
+        "question": "السيد المسيح إله كامل وإنسان كامل في آن واحد.",
+        "options": [
+          {
+            "text": "صح",
+            "correct": true,
+            "comment": "طبيعة واحدة متحدة من لاهوت وناسوت."
+          },
+          {
+            "text": "خطأ",
+            "correct": false,
+            "comment": ""
+          }
+        ]
+      },
+      {
+        "question": "اتحاد اللاهوت بالناسوت يشبه اتحاد النار بالحديد.",
+        "options": [
+          {
+            "text": "صح",
+            "correct": true,
+            "comment": "مثال يستخدمه الآباء لتوضيح الاتحاد بدون تغيير (الحديد يظل حديداً والنار ناراً)."
+          },
+          {
+            "text": "خطأ",
+            "correct": false,
+            "comment": ""
+          }
+        ]
+      },
+      {
+        "question": "بعد التجسد، انفصل اللاهوت عن الناسوت لحظة واحدة.",
+        "options": [
+          {
+            "text": "صح",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "خطأ",
+            "correct": true,
+            "comment": "لم ينفصل عنه لحظة واحدة ولا طرفة عين."
+          }
+        ]
+      },
+      {
+        "question": "الهدف الأساسي من التجسد هو:",
+        "options": [
+          {
+            "text": "إظهار القوة والمعجزات",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "خلاص البشرية وتجديد طبيعتها",
+            "correct": true,
+            "comment": " التجسد كان وسيلة للفداء والتجديد."
+          },
+          {
+            "text": "تعريف الناس بالشرائع القديمة",
+            "correct": false,
+            "comment": ""
+          }
+        ]
+      },
+      {
+        "question": "يقول القديس بولس: 'عظيم هو سر التقوى الله ظهر في...':",
+        "options": [
+          {
+            "text": "السماء",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "الجسد",
+            "correct": true,
+            "comment": " تيموثاوس الأولى 3: 16."
+          },
+          {
+            "text": "السحاب",
+            "correct": false,
+            "comment": ""
+          }
+        ]
+      },
+      {
+        "question": "في الاتحاد الأقنومي، طبيعة المسيح هي:",
+        "options": [
+          {
+            "text": "طبيعتان منفصلتان",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "طبيعة واحدة متحدة من طبيعتين",
+            "correct": true,
+            "comment": " طبيعة واحدة لله الكلمة المتجسد."
+          },
+          {
+            "text": "طبيعة إلهية فقط",
+            "correct": false,
+            "comment": ""
+          }
+        ]
+      },
+      {
+        "question": "اتحاد اللاهوت بالناسوت تم في:",
+        "options": [
+          {
+            "text": "لحظة العماد",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "لحظة البشارة والحبل المقدس",
+            "correct": true,
+            "comment": " منذ اللحظة الأولى للحبل به في بطن العذراء."
+          },
+          {
+            "text": "بعد القيامة",
+            "correct": false,
+            "comment": ""
+          }
+        ]
+      },
+      {
+        "question": "عبارة 'إخلاء الذات' (Kenosis) تعني:",
+        "options": [
+          {
+            "text": "فقدان الألوهية",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "حجب المجد الإلهي ولبس صورة العبد",
+            "correct": true,
+            "comment": " لم يتخلَ عن لاهوته بل أخفى مجده."
+          },
+          {
+            "text": "الانعزال عن العالم",
+            "correct": false,
+            "comment": ""
+          }
+        ]
+      },
+      {
+        "question": "الفداء ضرورة لأن الخطية كانت موجهة ضد الله غير المحدود.",
+        "options": [
+          {
+            "text": "صح",
+            "correct": true,
+            "comment": " خطية غير محدودة تستوجب كفارة غير محدودة."
+          },
+          {
+            "text": "خطأ",
+            "correct": false,
+            "comment": ""
+          }
+        ]
+      },
+      {
+        "question": "كان يمكن لأي إنسان بار مثل نوح أو إبراهيم أن يفدي البشرية.",
+        "options": [
+          {
+            "text": "صح",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "خطأ",
+            "correct": true,
+            "comment": " لأنهم بشر محدودون وخطاة."
+          }
+        ]
+      },
+      {
+        "question": "الموت الذي جلبته الخطية هو موت جسدي وروحي وأبدي.",
+        "options": [
+          {
+            "text": "صح",
+            "correct": true,
+            "comment": " الموت بمفهومه الشامل."
+          },
+          {
+            "text": "خطأ",
+            "correct": false,
+            "comment": ""
+          }
+        ]
+      },
+      {
+        "question": "الفداء يعني دفع الثمن 'عوضاً عن' البشر.",
+        "options": [
+          {
+            "text": "صح",
+            "correct": true,
+            "comment": "الموت النيابي."
+          },
+          {
+            "text": "خطأ",
+            "correct": false,
+            "comment": ""
+          }
+        ]
+      },
+      {
+        "question": "الله صالح ورحيم، لذلك غفر الخطية دون الحاجة لعدل.",
+        "options": [
+          {
+            "text": "صح",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "خطأ",
+            "correct": true,
+            "comment": "الله رحيم وعادل معاً، لا يطغى أحدهما على الآخر."
+          }
+        ]
+      },
+      {
+        "question": "شروط الفادي يجب أن يكون:",
+        "options": [
+          {
+            "text": "إنساناً فقط",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "إلها فقط",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "إنساناً بلا خطية، وإلها غير محدود",
+            "correct": true,
+            "comment": " ليجمع بين الموت (كإنسان) والقدرة غير المحدودة (كإله)."
+          }
+        ]
+      },
+      {
+        "question": "الذبيحة في العهد القديم كانت:",
+        "options": [
+          {
+            "text": "كافية لمحو الخطية تماماً",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "رمزاً وتذكاراً لذبيحة المسيح",
+            "correct": true,
+            "comment": " دم التيوس والعجول لا يرفع خطية."
+          },
+          {
+            "text": "مجرد طقس اجتماعي",
+            "correct": false,
+            "comment": ""
+          }
+        ]
+      },
+      {
+        "question": "بالموت على الصليب المسيح سحق سلطة:",
+        "options": [
+          {
+            "text": "الرومان",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "الموت والشرير",
+            "correct": true,
+            "comment": " أبطل الموت بموته."
+          },
+          {
+            "text": "الفلسفة اليونانية",
+            "correct": false,
+            "comment": ""
+          }
+        ]
+      },
+      {
+        "question": "العدل الإلهي استوفي حقه بـ:",
+        "options": [
+          {
+            "text": "الصلوات والصوم",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "التوبة فقط",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "موت المسيح النيابي",
+            "correct": true,
+            "comment": " دفع أجرة الخطية وهي الموت."
+          }
+        ]
+      },
+      {
+        "question": "نتائج الفداء تشمل:",
+        "options": [
+          {
+            "text": "المصالحة مع الله",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "غفران الخطايا",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "كل ما سبق",
+            "correct": true,
+            "comment": " الفداء حقق المصالحة، الغفران، التبني، والحياة الأبدية."
+          }
+        ]
+      },
+      {
+        "question": "قانون الإيمان النيقي يركز على مساواة الابن للآب في الجوهر.",
+        "options": [
+          {
+            "text": "صح",
+            "correct": true,
+            "comment": " مساوٍ للآب في الجوهر (هوموؤسيوس)."
+          },
+          {
+            "text": "خطأ",
+            "correct": false,
+            "comment": ""
+          }
+        ]
+      },
+      {
+        "question": "لقب 'ثيؤطوكوس' (والدة الإله) يؤكد عقيدة التجسد.",
+        "options": [
+          {
+            "text": "صح",
+            "correct": true,
+            "comment": " لأنها ولدت الله المتجسد."
+          },
+          {
+            "text": "خطأ",
+            "correct": false,
+            "comment": ""
+          }
+        ]
+      },
+      {
+        "question": "التوبة وحدها كانت كافية لإصلاح الطبيعة البشرية بعد السقوط.",
+        "options": [
+          {
+            "text": "صح",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "خطأ",
+            "correct": true,
+            "comment": "التوبة لا توفي الدين ولا تجدد الطبيعة الفاسدة."
+          }
+        ]
+      },
+      {
+        "question": "اللاهوت ذاق الموت مع الناسوت على الصليب.",
+        "options": [
+          {
+            "text": "صح",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "خطأ",
+            "correct": true,
+            "comment": " اللاهوت لا يموت، المسيح مات بالجسد."
+          }
+        ]
+      },
+      {
+        "question": "الله واحد في الجوهر مثلث الأقانيم.",
+        "options": [
+          {
+            "text": "صح",
+            "correct": true,
+            "comment": " جوهر واحد وثلاثة أقانيم."
+          },
+          {
+            "text": "خطأ",
+            "correct": false,
+            "comment": ""
+          }
+        ]
+      },
+      {
+        "question": "التجسد كان لازماً لكي يتم الفداء بالدم.",
+        "options": [
+          {
+            "text": "صح",
+            "correct": true,
+            "comment": " بدون سفك دم لا تحصل مغفرة، والله روح لا دم له إلا بالتجسد."
+          },
+          {
+            "text": "خطأ",
+            "correct": false,
+            "comment": ""
+          }
+        ]
+      },
+      {
+        "question": "أقنوم الابن هو الذي تجسد وليس الأب أو الروح القدس.",
+        "options": [
+          {
+            "text": "صح",
+            "correct": true,
+            "comment": " الكلمة صار جسداً."
+          },
+          {
+            "text": "خطأ",
+            "correct": false,
+            "comment": ""
+          }
+        ]
+      },
+      {
+        "question": "المسيح بعد القيامة ترك جسده وصار روحاً فقط.",
+        "options": [
+          {
+            "text": "صح",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "خطأ",
+            "correct": true,
+            "comment": " قام بنفس الجسد ممجداً."
+          }
+        ]
+      },
+      {
+        "question": "الفداء هو عمل من أعمال الحب الإلهي.",
+        "options": [
+          {
+            "text": "صح",
+            "correct": true,
+            "comment": " هكذا أحب الله العالم."
+          },
+          {
+            "text": "خطأ",
+            "correct": false,
+            "comment": ""
+          }
+        ]
+      },
+      {
+        "question": "المعرفة العقلية وحدها كافية لفهم سر الثالوث.",
+        "options": [
+          {
+            "text": "صح",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "خطأ",
+            "correct": true,
+            "comment": " يحتاج لإيمان واستنارة."
+          }
+        ]
+      },
+      {
+        "question": "من صفات الجوهر الإلهي أنه:",
+        "options": [
+          {
+            "text": "محدود",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "كلي الوجود",
+            "correct": true,
+            "comment": " موجود في كل مكان."
+          },
+          {
+            "text": "متغير",
+            "correct": false,
+            "comment": ""
+          }
+        ]
+      },
+      {
+        "question": "كلمة 'عمانوئيل' تعني:",
+        "options": [
+          {
+            "text": "الله مخلصنا",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "الله معنا",
+            "correct": true,
+            "comment": " تفسير الاسم في إنجيل متى."
+          },
+          {
+            "text": "الله القوي",
+            "correct": false,
+            "comment": ""
+          }
+        ]
+      },
+      {
+        "question": "السقوط أدى إلى فساد:",
+        "options": [
+          {
+            "text": "الأرض فقط",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "الطبيعة البشرية",
+            "correct": true,
+            "comment": " تشوهت الصورة الإلهية في الإنسان."
+          },
+          {
+            "text": "الكائنات الملائكية",
+            "correct": false,
+            "comment": ""
+          }
+        ]
+      },
+      {
+        "question": "المسيح هو 'آدم الثاني' لأنه:",
+        "options": [
+          {
+            "text": "جاء في نهاية الزمان",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "صار رأساً جديداً للبشرية المفتداة",
+            "correct": true,
+            "comment": " يصحح ما أفسده آدم الأول."
+          },
+          {
+            "text": "كان يعيش في بستان",
+            "correct": false,
+            "comment": ""
+          }
+        ]
+      },
+      {
+        "question": "الدم في العهد القديم كان يرمز لـ:",
+        "options": [
+          {
+            "text": "الماء",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "الحياة المبذولة",
+            "correct": true,
+            "comment": " نفس الجسد هي في الدم."
+          },
+          {
+            "text": "القوة الجسدية",
+            "correct": false,
+            "comment": ""
+          }
+        ]
+      },
+      {
+        "question": "العلاقة بين التجسد والفداء هي:",
+        "options": [
+          {
+            "text": "لا توجد علاقة",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "التجسد وسيلة للفداء",
+            "correct": true,
+            "comment": " تجسد لكي يفدي."
+          },
+          {
+            "text": "الفداء حدث قبل التجسد",
+            "correct": false,
+            "comment": ""
+          }
+        ]
+      },
+      {
+        "question": "المقصود بـ 'بكر كل خليقة' عن المسيح هو:",
+        "options": [
+          {
+            "text": "أول من خلق",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "رأس الخليقة ومصدرها",
+            "correct": true,
+            "comment": " المتقدم والوارث وصاحب السلطان."
+          },
+          {
+            "text": "أصغر الأنبياء",
+            "correct": false,
+            "comment": ""
+          }
+        ]
+      },
+      {
+        "question": "سر 'التقوى' هو:",
+        "options": [
+          {
+            "text": "حفظ الوصايا فقط",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "ظهور الله في الجسد",
+            "correct": true,
+            "comment": " عظيم هو سر التقوى الله ظهر في الجسد."
+          },
+          {
+            "text": "الهروب من العالم",
+            "correct": false,
+            "comment": ""
+          }
+        ]
+      },
+      {
+        "question": "اتحاد اللاهوت والناسوت في المسيح هو اتحاد:",
+        "options": [
+          {
+            "text": "اختلاط",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "امتزاج",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "بغير اختلاط ولا امتزاج ولا تغيير",
+            "correct": true,
+            "comment": " عبارة أساسية في القداس الإلهي."
+          }
+        ]
+      },
+      {
+        "question": "غرض الله من خلق الإنسان كان:",
+        "options": [
+          {
+            "text": "أن يشقى",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "أن يشترك في مجده وحياته الأبدية",
+            "correct": true,
+            "comment": " الله محبة وخلق الإنسان ليفيض عليه من محبته."
+          },
+          {
+            "text": "أن يعمر الأرض كهدف نهائي",
+            "correct": false,
+            "comment": ""
+          }
+        ]
+      }
+    ]
+  },
+  "أسئلة كل كتاب منفصل": {
+    "subtitle": "",
+    "questions": [
+      {
+        "question": "التوحيد في المسيحية هو توحيد 'مطلق' ينفي وجود تمايز أقنومي.",
+        "options": [
+          {
+            "text": "صح",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "خطأ",
+            "correct": true,
+            "comment": "هو توحيد جامع (وحدانية جامعة مانعة)."
+          }
+        ]
+      },
+      {
+        "question": "الأقنوم كلمة سريانية تعني 'شخص' أو 'كائن حي حقيقي'.",
+        "options": [
+          {
+            "text": "صح",
+            "correct": true,
+            "comment": ""
+          },
+          {
+            "text": "خطأ",
+            "correct": false,
+            "comment": ""
+          }
+        ]
+      },
+      {
+        "question": "الجوهر الإلهي ينقسم بين الأقانيم الثلاثة، فكل أقنوم يملك ثلث الجوهر.",
+        "options": [
+          {
+            "text": "صح",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "خطأ",
+            "correct": true,
+            "comment": "الجوهر لا ينقسم، كل أقنوم هو الله كاملاً."
+          }
+        ]
+      },
+      {
+        "question": "الآب هو أصل الوجود في الثالوث، والابن مولود منه منذ الأزل.",
+        "options": [
+          {
+            "text": "صح",
+            "correct": true,
+            "comment": ""
+          },
+          {
+            "text": "خطأ",
+            "correct": false,
+            "comment": ""
+          }
+        ]
+      },
+      {
+        "question": "الروح القدس منبثق من الآب والابن معاً في العقيدة الأرثوذكسية.",
+        "options": [
+          {
+            "text": "صح",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "خطأ",
+            "correct": true,
+            "comment": "منبثق من الآب فقط (يوحنا 15: 26)."
+          }
+        ]
+      },
+      {
+        "question": "الولادة والانبثاق في الثالوث هما حركتان تمتا في الزمن.",
+        "options": [
+          {
+            "text": "صح",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "خطأ",
+            "correct": true,
+            "comment": "هما حركتان أزليتان فوق الزمن."
+          }
+        ]
+      },
+      {
+        "question": "المسيحية ترفض تعدد الآلهة وتؤمن بإله واحد.",
+        "options": [
+          {
+            "text": "صح",
+            "correct": true,
+            "comment": ""
+          },
+          {
+            "text": "خطأ",
+            "correct": false,
+            "comment": ""
+          }
+        ]
+      },
+      {
+        "question": "الأقانيم متساوية في المجد والعظمة والقدرة.",
+        "options": [
+          {
+            "text": "صح",
+            "correct": true,
+            "comment": ""
+          },
+          {
+            "text": "خطأ",
+            "correct": false,
+            "comment": ""
+          }
+        ]
+      },
+      {
+        "question": "'الابن' في الثالوث تعني ولادة جسدية مادية.",
+        "options": [
+          {
+            "text": "صح",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "خطأ",
+            "correct": true,
+            "comment": "تعني ولادة روحية كولادة الفكر من العقل."
+          }
+        ]
+      },
+      {
+        "question": "التثليث والتوحيد عقيدة فوق العقل ولكنها ليست ضد العقل.",
+        "options": [
+          {
+            "text": "صح",
+            "correct": true,
+            "comment": ""
+          },
+          {
+            "text": "خطأ",
+            "correct": false,
+            "comment": ""
+          }
+        ]
+      },
+      {
+        "question": "ما هو الأقنوم الذي يمثل 'عقل الله الناطق'؟",
+        "options": [
+          {
+            "text": "الآب",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "الابن",
+            "correct": true,
+            "comment": "هو اللوغوس (العقل/الكلمة)."
+          },
+          {
+            "text": "الروح القدس",
+            "correct": false,
+            "comment": ""
+          }
+        ]
+      },
+      {
+        "question": "خاصية أقنوم الأب هي:",
+        "options": [
+          {
+            "text": "المولودية",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "الأبوة (أصل الوجود)",
+            "correct": true,
+            "comment": ""
+          },
+          {
+            "text": "الانبثاق",
+            "correct": false,
+            "comment": ""
+          }
+        ]
+      },
+      {
+        "question": "نحن نؤمن بإله واحد، جوهر واحد وثلاثة ......",
+        "options": [
+          {
+            "text": "أجساد",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "صور",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "أقانيم",
+            "correct": true,
+            "comment": ""
+          }
+        ]
+      },
+      {
+        "question": "اتحاد الأقانيم هو اتحاد:",
+        "options": [
+          {
+            "text": "جوهر وطبيعة",
+            "correct": true,
+            "comment": "اتحاد كياني في الجوهر الواحد."
+          },
+          {
+            "text": "مشاعر فقط",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "مكاني",
+            "correct": false,
+            "comment": ""
+          }
+        ]
+      },
+      {
+        "question": "لقب 'اللوجوس' يطلق على:",
+        "options": [
+          {
+            "text": "الروح القدس",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "أقنوم الابن",
+            "correct": true,
+            "comment": ""
+          },
+          {
+            "text": "الملاك جبرائيل",
+            "correct": false,
+            "comment": ""
+          }
+        ]
+      },
+      {
+        "question": "الروح القدس هو أقنوم:",
+        "options": [
+          {
+            "text": "المعرفة",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "الحياة",
+            "correct": true,
+            "comment": "هو الرب المحيي."
+          },
+          {
+            "text": "الوجود",
+            "correct": false,
+            "comment": ""
+          }
+        ]
+      },
+      {
+        "question": "التشبيه الذي استخدمه الآباء لشرح الثالوث (مع الفارق) هو:",
+        "options": [
+          {
+            "text": "الشمس (قرص، ضوء، حرارة)",
+            "correct": true,
+            "comment": ""
+          },
+          {
+            "text": "الأرقام (1+1+1)",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "العائلة (أب وأم وابن)",
+            "correct": false,
+            "comment": "هذا تشبيه خاطئ لأنه يعني انفصالاً."
+          }
+        ]
+      },
+      {
+        "question": "العلاقة بين الآب والابن هي:",
+        "options": [
+          {
+            "text": "علاقة خلق",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "علاقة ولادة أزلية",
+            "correct": true,
+            "comment": ""
+          },
+          {
+            "text": "علاقة صداقة",
+            "correct": false,
+            "comment": ""
+          }
+        ]
+      },
+      {
+        "question": "وحدة اللاهوت تعني أن الآب والابن والروح القدس لهم:",
+        "options": [
+          {
+            "text": "إرادة واحدة وقدرة واحدة",
+            "correct": true,
+            "comment": "لأن الجوهر واحد فالمشيئة واحدة."
+          },
+          {
+            "text": "ثلاث إرادات متوافقة",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "أهداف مختلفة",
+            "correct": false,
+            "comment": ""
+          }
+        ]
+      },
+      {
+        "question": "الآية 'تعمدهم باسم الآب والابن والروح القدس' تدل على:",
+        "options": [
+          {
+            "text": "التعدد",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "الوحدانية في الثالوث (باسم وليس بأسماء)",
+            "correct": true,
+            "comment": ""
+          },
+          {
+            "text": "ترتيب الأهمية",
+            "correct": false,
+            "comment": ""
+          }
+        ]
+      },
+      {
+        "question": "التجسد هو اتحاد اللاهوت بالناسوت (الطبيعة البشرية).",
+        "options": [
+          {
+            "text": "صح",
+            "correct": true,
+            "comment": ""
+          },
+          {
+            "text": "خطأ",
+            "correct": false,
+            "comment": ""
+          }
+        ]
+      },
+      {
+        "question": "اتخذ الكلمة جسداً من العذراء مريم بزرع بشر.",
+        "options": [
+          {
+            "text": "صح",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "خطأ",
+            "correct": true,
+            "comment": "بحلول الروح القدس (بدون زرع بشر)."
+          }
+        ]
+      },
+      {
+        "question": "في التجسد، تحول اللاهوت إلى ناسوت.",
+        "options": [
+          {
+            "text": "صح",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "خطأ",
+            "correct": true,
+            "comment": "بغير استحالة (تحول) أو تغيير."
+          }
+        ]
+      },
+      {
+        "question": "السيد المسيح له 'نفس عاقلة' و 'روح إنسانية' إلى جانب جسده.",
+        "options": [
+          {
+            "text": "صح",
+            "correct": true,
+            "comment": "ناسوت كامل (جسد وروح)."
+          },
+          {
+            "text": "خطأ",
+            "correct": false,
+            "comment": ""
+          }
+        ]
+      },
+      {
+        "question": "الاتحاد بين اللاهوت والناسوت هو اتحاد 'أقنومي' دائم.",
+        "options": [
+          {
+            "text": "صح",
+            "correct": true,
+            "comment": ""
+          },
+          {
+            "text": "خطأ",
+            "correct": false,
+            "comment": ""
+          }
+        ]
+      },
+      {
+        "question": "انفصل اللاهوت عن الناسوت وقت موت المسيح على الصليب.",
+        "options": [
+          {
+            "text": "صح",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "خطأ",
+            "correct": true,
+            "comment": "لاهوته لم يفارق ناسوته لحظة واحدة."
+          }
+        ]
+      },
+      {
+        "question": "لقب 'ثيؤطوكوس' يعني أن العذراء هي مصدر اللاهوت.",
+        "options": [
+          {
+            "text": "صح",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "خطأ",
+            "correct": true,
+            "comment": "تعني والدة الإله المتجسد، وليست مصدراً لألوهيته."
+          }
+        ]
+      },
+      {
+        "question": "التجسد جعل الله منظوراً وملموساً بالجسد.",
+        "options": [
+          {
+            "text": "صح",
+            "correct": true,
+            "comment": ""
+          },
+          {
+            "text": "خطأ",
+            "correct": false,
+            "comment": ""
+          }
+        ]
+      },
+      {
+        "question": "المسيح شابهنا في كل شيء بما في ذلك 'الخطية الجدية'.",
+        "options": [
+          {
+            "text": "صح",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "خطأ",
+            "correct": true,
+            "comment": "شابهنا في كل شيء ما خلا الخطية وحدها."
+          }
+        ]
+      },
+      {
+        "question": "اللاهوت لم يتألم بالأوجاع التي وقعت على الناسوت.",
+        "options": [
+          {
+            "text": "صح",
+            "correct": true,
+            "comment": "اللاهوت منزه عن الألم، ولكن الألم ينسب لشخص المسيح الواحد."
+          },
+          {
+            "text": "خطأ",
+            "correct": false,
+            "comment": ""
+          }
+        ]
+      },
+      {
+        "question": "ما معنى كلمة 'إخلاء الذات'؟",
+        "options": [
+          {
+            "text": "التخلي عن الألوهية",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "إخفاء المجد وعظمة اللاهوت في شكل العبد",
+            "correct": true,
+            "comment": ""
+          },
+          {
+            "text": "الفراغ المكاني",
+            "correct": false,
+            "comment": ""
+          }
+        ]
+      },
+      {
+        "question": "لماذا تجسد 'أقنوم الابن' تحديداً؟",
+        "options": [
+          {
+            "text": "لأنه الأقل",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "لأنه الحكمة والعقل الذي خلق به الإنسان",
+            "correct": true,
+            "comment": "فمن اللائق أن يجدد الخالق (العقل) خليقته."
+          },
+          {
+            "text": "لأنه لا يملك جسداً",
+            "correct": false,
+            "comment": ""
+          }
+        ]
+      },
+      {
+        "question": "اتحاد اللاهوت بالناسوت يشبه اتحاد:",
+        "options": [
+          {
+            "text": "الزيت بالماء",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "النار بالحديد",
+            "correct": true,
+            "comment": "اتحاد بدون اختلاط أو تغيير طبيعة الآخر."
+          },
+          {
+            "text": "الرداء بجسد الإنسان",
+            "correct": false,
+            "comment": ""
+          }
+        ]
+      },
+      {
+        "question": "قال القديس أثناسيوس: 'تجسد لكي...':",
+        "options": [
+          {
+            "text": "نصير نحن آلهة (بالنعمة)",
+            "correct": true,
+            "comment": "أي شركاء الطبيعة الإلهية في القداسة والخلود."
+          },
+          {
+            "text": "يعيش في الأرض",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "يعلمنا الأخلاق",
+            "correct": false,
+            "comment": ""
+          }
+        ]
+      },
+      {
+        "question": "الطبيعة البشرية التي أخذها المسيح كانت:",
+        "options": [
+          {
+            "text": "طبيعة خيالية",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "طبيعة حقيقية كاملة",
+            "correct": true,
+            "comment": ""
+          },
+          {
+            "text": "جسداً بلا روح",
+            "correct": false,
+            "comment": ""
+          }
+        ]
+      },
+      {
+        "question": "التجسد تم من خلال:",
+        "options": [
+          {
+            "text": "القديس يوسف النجار",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "القديسة مريم العذراء",
+            "correct": true,
+            "comment": ""
+          },
+          {
+            "text": "النزول من السماء بجسد جاهز",
+            "correct": false,
+            "comment": ""
+          }
+        ]
+      },
+      {
+        "question": "بعد الاتحاد، نتحدث عن السيد المسيح بكونه:",
+        "options": [
+          {
+            "text": "شخصين",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "طبيعة واحدة متحدة (ميا فيزيس)",
+            "correct": true,
+            "comment": "طبيعة واحدة لله الكلمة المتجسد."
+          },
+          {
+            "text": "إلها متخفياً",
+            "correct": false,
+            "comment": ""
+          }
+        ]
+      },
+      {
+        "question": "'الكلمة صار جسداً' تعني أن الأقنوم الثاني:",
+        "options": [
+          {
+            "text": "تغير جوهره",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "اتخذ جسداً خاصاً به",
+            "correct": true,
+            "comment": ""
+          },
+          {
+            "text": "سكن داخل إنسان",
+            "correct": false,
+            "comment": ""
+          }
+        ]
+      },
+      {
+        "question": "أهمية التجسد تكمن في أنه:",
+        "options": [
+          {
+            "text": "أعطى قداسة للجسد والمادة",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "مكن الله من الموت نيابة عنا",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "كل ما سبق صحيح",
+            "correct": true,
+            "comment": ""
+          }
+        ]
+      },
+      {
+        "question": "آية 'عظيم هو سر التقوى الله ظهر في الجسد' وردت في رسالة:",
+        "options": [
+          {
+            "text": "تيموثاوس الأولى",
+            "correct": true,
+            "comment": "1 تيموثاوس 3: 16."
+          },
+          {
+            "text": "رومية",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "عبرانيين",
+            "correct": false,
+            "comment": ""
+          }
+        ]
+      },
+      {
+        "question": "خطية آدم كانت عصياناً لله غير المحدود، لذا عقوبتها غير محدودة.",
+        "options": [
+          {
+            "text": "صح",
+            "correct": true,
+            "comment": ""
+          },
+          {
+            "text": "خطأ",
+            "correct": false,
+            "comment": ""
+          }
+        ]
+      },
+      {
+        "question": "التوبة وحدها كافية لمحو حكم الموت وإصلاح الطبيعة البشرية.",
+        "options": [
+          {
+            "text": "صح",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "خطأ",
+            "correct": true,
+            "comment": "التوبة شرط لكنها لا توفي الدين."
+          }
+        ]
+      },
+      {
+        "question": "الفادي يجب أن يكون بشراً لكي يموت عوضاً عن البشر.",
+        "options": [
+          {
+            "text": "صح",
+            "correct": true,
+            "comment": ""
+          },
+          {
+            "text": "خطأ",
+            "correct": false,
+            "comment": ""
+          }
+        ]
+      },
+      {
+        "question": "الفادي يجب أن يكون إلها لكي يكون فداؤه كافياً لكل البشر وفي كل زمان.",
+        "options": [
+          {
+            "text": "صح",
+            "correct": true,
+            "comment": ""
+          },
+          {
+            "text": "خطأ",
+            "correct": false,
+            "comment": ""
+          }
+        ]
+      },
+      {
+        "question": "المسيح دفع ثمن الفداء للشيطان.",
+        "options": [
+          {
+            "text": "صح",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "خطأ",
+            "correct": true,
+            "comment": "الفداء هو استيفاء للعدل الإلهي."
+          }
+        ]
+      },
+      {
+        "question": "ذبائح العهد القديم كانت تمحو الخطايا تماماً.",
+        "options": [
+          {
+            "text": "صح",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "خطأ",
+            "correct": true,
+            "comment": "كانت رمزاً (ظل الخيرات العتيدة)."
+          }
+        ]
+      },
+      {
+        "question": "بموت المسيح، تحولت عقوبة الموت إلى وسيلة للعبور للحياة الأبدية.",
+        "options": [
+          {
+            "text": "صح",
+            "correct": true,
+            "comment": ""
+          },
+          {
+            "text": "خطأ",
+            "correct": false,
+            "comment": ""
+          }
+        ]
+      },
+      {
+        "question": "الفداء هو فعل إجباري قام به الابن لإرضاء الآب الغاضب.",
+        "options": [
+          {
+            "text": "صح",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "خطأ",
+            "correct": true,
+            "comment": "هو فعل حب مشترك بين الأقانيم."
+          }
+        ]
+      },
+      {
+        "question": "الصليب هو 'عرش' الحب والعدل معاً.",
+        "options": [
+          {
+            "text": "صح",
+            "correct": true,
+            "comment": ""
+          },
+          {
+            "text": "خطأ",
+            "correct": false,
+            "comment": ""
+          }
+        ]
+      },
+      {
+        "question": "القيامة هي الدليل الأكبر على قبول ذبيحة الفداء وانتصارها.",
+        "options": [
+          {
+            "text": "صح",
+            "correct": true,
+            "comment": ""
+          },
+          {
+            "text": "خطأ",
+            "correct": false,
+            "comment": ""
+          }
+        ]
+      },
+      {
+        "question": "لماذا لم يفدنا ملاك؟",
+        "options": [
+          {
+            "text": "لأن الملاك لا يموت",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "لأن الملاك ليس بشراً من جنسنا",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "كل ما سبق",
+            "correct": true,
+            "comment": "الملاك محدود، وغير بشري، ولا يموت."
+          }
+        ]
+      },
+      {
+        "question": "العدل الإلهي يقتضي أن 'أجرة الخطية هي...'.",
+        "options": [
+          {
+            "text": "موت",
+            "correct": true,
+            "comment": ""
+          },
+          {
+            "text": "تعب",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "نفي",
+            "correct": false,
+            "comment": ""
+          }
+        ]
+      },
+      {
+        "question": "الفداء 'النيابي' يعني أن المسيح مات:",
+        "options": [
+          {
+            "text": "من أجل نفسه",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "بدلاً عنا وعوضاً عنا",
+            "correct": true,
+            "comment": ""
+          },
+          {
+            "text": "كمثال للشجاعة فقط",
+            "correct": false,
+            "comment": ""
+          }
+        ]
+      },
+      {
+        "question": "من شروط الفادي أن يكون:",
+        "options": [
+          {
+            "text": "قادراً على الخلق",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "بلا خطية وحده",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "غير محدود وبلا خطية وإنساناً",
+            "correct": true,
+            "comment": ""
+          }
+        ]
+      },
+      {
+        "question": "الخلاص الذي تم على الصليب هو خلاص:",
+        "options": [
+          {
+            "text": "للمؤمنين فقط في ذلك الوقت",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "متاح لكل من يؤمن ويقبل مفاعيله",
+            "correct": true,
+            "comment": ""
+          },
+          {
+            "text": "إجباري للجميع",
+            "correct": false,
+            "comment": ""
+          }
+        ]
+      },
+      {
+        "question": "قال السيد المسيح: 'ليس لأحد حب أعظم من هذا أن يضع أحد...'.",
+        "options": [
+          {
+            "text": "ماله لأصدقائه",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "نفسه لأجل أحبائه",
+            "correct": true,
+            "comment": ""
+          },
+          {
+            "text": "وقته لخدمة الناس",
+            "correct": false,
+            "comment": ""
+          }
+        ]
+      },
+      {
+        "question": "في الصليب، تلاقى:",
+        "options": [
+          {
+            "text": "الأرض والسماء",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "الرحمة والحق (العدل)",
+            "correct": true,
+            "comment": "الرحمة والحق تلاقيا، البر والسلام تلاثما (مزمور 85)."
+          },
+          {
+            "text": "الفكر والمادة",
+            "correct": false,
+            "comment": ""
+          }
+        ]
+      },
+      {
+        "question": "كان يجب أن يموت الفادي 'بالدم' لأن:",
+        "options": [
+          {
+            "text": "نفس الجسد في الدم ولا مغفرة بدون سفك دم",
+            "correct": true,
+            "comment": ""
+          },
+          {
+            "text": "الدم منظره مخيف",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "هكذا كانت العادة",
+            "correct": false,
+            "comment": ""
+          }
+        ]
+      },
+      {
+        "question": "فساد الطبيعة البشرية يعني أنها أصبحت:",
+        "options": [
+          {
+            "text": "قوية",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "مائلة للخطية ومنفصلة عن الله",
+            "correct": true,
+            "comment": ""
+          },
+          {
+            "text": "ملائكية",
+            "correct": false,
+            "comment": ""
+          }
+        ]
+      },
+      {
+        "question": "بقيامة المسيح من الأموات:",
+        "options": [
+          {
+            "text": "أثبت أنه نبي عظيم",
+            "correct": false,
+            "comment": ""
+          },
+          {
+            "text": "أبطل عز الموت ومنحنا الرجاء",
+            "correct": true,
+            "comment": ""
+          },
+          {
+            "text": "انتهى دور الجسد",
+            "correct": false,
+            "comment": ""
+          }
+        ]
+      }
+    ]
+  },
   "كتاب التوحيد والتثليث للقس بيشوي حلمي 1": {
     "subtitle": "",
     "questions": [
