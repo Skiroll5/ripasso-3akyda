@@ -133,19 +133,18 @@
             margin-bottom: 4px;
         }
 
-        .question-comment {
-            margin-top: 16px;
-            padding: 12px 16px;
-            background: rgba(49, 130, 206, 0.08);
-            border-right: 3px solid var(--accent);
-            border-radius: 6px;
-            font-size: 0.95rem;
-            color: var(--text);
-            line-height: 1.6;
+        .option-comment-inline {
+            width: 100%;
+            margin-top: 8px;
+            font-size: 0.85rem;
+            opacity: 0.9;
+            line-height: 1.4;
         }
 
-        [data-theme="dark"] .question-comment {
-            background: rgba(137, 180, 250, 0.1);
+        .option-content-wrapper {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
         }
 
         .quiz-arrow {
@@ -1126,17 +1125,143 @@
             return -1;
         }
 
+        const MistakesManager = {
+            key: 'kahoot_mistakes_v2',
+            get() { return JSON.parse(localStorage.getItem(this.key) || '{}'); },
+            save(data) { localStorage.setItem(this.key, JSON.stringify(data)); },
+            add(quizName, qIndex) {
+                const data = this.get();
+                if (!data[quizName]) data[quizName] = {};
+                const k = qIndex.toString();
+                if (!data[quizName][k]) data[quizName][k] = 0;
+                data[quizName][k]++;
+                this.save(data);
+            },
+            remove(quizName, qIndex) {
+                const data = this.get();
+                if (data[quizName]) {
+                    delete data[quizName][qIndex.toString()];
+                    if (Object.keys(data[quizName]).length === 0) delete data[quizName];
+                    this.save(data);
+                }
+            },
+            getCount(quizName, qIndex) {
+                const data = this.get();
+                return data[quizName]?.[qIndex.toString()] || 0;
+            },
+            getAllMistakesAsQuiz() {
+                const data = this.get();
+                const questions = [];
+                Object.keys(data).forEach(qName => {
+                    const quiz = QUIZ_DATA[qName];
+                    if (!quiz) return;
+                    Object.keys(data[qName]).forEach(idxStr => {
+                        const idx = parseInt(idxStr);
+                        const quizQuestions = quiz.questions || quiz;
+                        if (quizQuestions[idx]) {
+                            const q = quizQuestions[idx];
+                            // Clone and add metadata
+                            const mistakQ = JSON.parse(JSON.stringify(q));
+                            mistakQ._originalQuiz = qName;
+                            mistakQ._originalIndex = idx;
+                            mistakQ._wrongCount = data[qName][idxStr];
+                            questions.push(mistakQ);
+                        }
+                    });
+                });
+                return questions;
+            },
+            getTotalCount() {
+                const data = this.get();
+                let count = 0;
+                Object.values(data).forEach(q => count += Object.keys(q).length);
+                return count;
+            }
+        };
+
         function renderMenu() {
             quizListEl.innerHTML = '';
-            Object.keys(QUIZ_DATA).forEach(name => {
-                const quiz = QUIZ_DATA[name];
-                const questions = quiz.questions || quiz; // Support both old and new format
-                const subtitle = quiz.subtitle || '';
+
+            // Render Mistakes Section if exists
+            const mistakesCount = MistakesManager.getTotalCount();
+            if (mistakesCount > 0) {
+                const mistakesHeader = document.createElement('h2');
+                mistakesHeader.className = 'section-header';
+                mistakesHeader.textContent = 'مراجعة الأخطاء';
+                mistakesHeader.style.padding = '20px 20px 10px';
+                mistakesHeader.style.color = 'var(--wrong)';
+                quizListEl.appendChild(mistakesHeader);
 
                 const card = document.createElement('div');
                 card.className = 'quiz-card';
-                card.onclick = () => showOptionsModal(name);
+                card.style.borderLeft = '4px solid var(--wrong)';
+                card.onclick = () => showOptionsModal('__MISTAKES__');
                 card.innerHTML = `
+                    <div class="quiz-info">
+                        <h3>أخطائي السابقة</h3>
+                        <div class="quiz-subtitle">أسئلة أجبت عليها بشكل خاطئ سابقاً</div>
+                        <span>${mistakesCount} سؤال</span>
+                    </div>
+                    <div class="quiz-arrow">←</div>
+                `;
+                quizListEl.appendChild(card);
+            }
+
+            const standardQuizzes = [];
+            const aiQuizzes = [];
+
+            Object.keys(QUIZ_DATA).forEach(name => {
+                const quiz = QUIZ_DATA[name];
+                if (quiz.isAI) {
+                    aiQuizzes.push(name);
+                } else {
+                    standardQuizzes.push(name);
+                }
+                // Closing brace for forEach is below in original code
+
+            });
+
+            // Render Standard Quizzes Header
+            if (standardQuizzes.length > 0) {
+                const standardHeader = document.createElement('h2');
+                standardHeader.className = 'section-header';
+                standardHeader.textContent = 'الامتحانات الموثقة';
+                standardHeader.style.padding = '20px 20px 10px';
+                standardHeader.style.fontSize = '1.2rem';
+                standardHeader.style.opacity = '0.8';
+                quizListEl.appendChild(standardHeader);
+
+                standardQuizzes.forEach(name => renderQuizCard(name));
+            }
+
+            // Render AI Quizzes Header
+            if (aiQuizzes.length > 0) {
+                const aiHeader = document.createElement('div');
+                aiHeader.className = 'section-header ai-header';
+                aiHeader.style.padding = '30px 20px 10px';
+                aiHeader.innerHTML = `
+                    <h2 style="font-size: 1.2rem; opacity: 0.8; margin-bottom: 5px;">امتحانات الذكاء الاصطناعي</h2>
+                    <div style="font-size: 0.9rem; color: var(--wrong); background: rgba(229, 62, 62, 0.1); padding: 8px 12px; border-radius: 6px; display: inline-block;">
+                        ⚠️ تنبيه: هذه الأسئلة تم توليدها بالذكاء الاصطناعي وقد تحتوي على أخطاء لاهوتية أو عقائدية.
+                    </div>
+                `;
+                quizListEl.appendChild(aiHeader);
+
+                aiQuizzes.forEach(name => renderQuizCard(name));
+            }
+        }
+
+        function renderQuizCard(name) {
+            const quiz = QUIZ_DATA[name];
+            const questions = quiz.questions || quiz;
+            const subtitle = quiz.subtitle || '';
+
+            const card = document.createElement('div');
+            card.className = 'quiz-card';
+            if (quiz.isAI) card.classList.add('ai-card');
+
+            card.onclick = () => showOptionsModal(name);
+            card.innerHTML = `
                 <div class="quiz-info">
                     <h3>${name}</h3>
                     ${subtitle ? `<div class="quiz-subtitle">${subtitle}</div>` : ''}
@@ -1144,8 +1269,7 @@
                 </div>
                 <div class="quiz-arrow">←</div>
             `;
-                quizListEl.appendChild(card);
-            });
+            quizListEl.appendChild(card);
         }
 
         function showOptionsModal(name) {
@@ -1167,6 +1291,7 @@
             menuWrapper.classList.remove('hidden');
             examWrapper.classList.remove('active');
             window.scrollTo(0, 0);
+            renderMenu(); // Refresh menu to show updated mistakes
         }
 
         function shuffleArray(arr) {
@@ -1179,14 +1304,35 @@
         }
 
         function startExam(name, shuffle = false) {
-            const quiz = QUIZ_DATA[name];
-            originalQuizData = quiz.questions || quiz; // Support both old and new format
-            quizData = shuffle ? shuffleArray(originalQuizData) : [...originalQuizData];
+            let fullQuestions = [];
+
+            if (name === '__MISTAKES__') {
+                fullQuestions = MistakesManager.getAllMistakesAsQuiz();
+                if (shuffle) fullQuestions = shuffleArray(fullQuestions);
+                document.getElementById('exam-title').textContent = 'أخطائي السابقة';
+            } else {
+                const quiz = QUIZ_DATA[name];
+                const rawQuestions = quiz.questions || quiz;
+
+                // Tag with original metadata before shuffle
+                fullQuestions = rawQuestions.map((q, idx) => {
+                    const newQ = Object.assign({}, q);
+                    newQ._originalQuiz = name;
+                    newQ._originalIndex = idx;
+                    return newQ;
+                });
+
+                if (shuffle) fullQuestions = shuffleArray(fullQuestions);
+                document.getElementById('exam-title').textContent = name;
+            }
+
+            originalQuizData = fullQuestions; // Keep reference
+            quizData = fullQuestions;
+
             answers = {};
             isSubmitted = false;
             questionResults = [];
 
-            document.getElementById('exam-title').textContent = name;
             document.getElementById('score-banner').classList.remove('visible');
             document.getElementById('filter-bar').classList.remove('visible');
             document.getElementById('submit-btn-mobile').style.display = 'inline-block';
@@ -1236,9 +1382,22 @@
                 header.appendChild(numEl);
                 header.appendChild(hint);
 
+                // Mistakes Metadata
+                let metaHtml = '';
+                if (q._wrongCount) {
+                    metaHtml = `
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; background: rgba(229, 62, 62, 0.1); padding: 5px 10px; border-radius: 6px;">
+                        <span style="font-size: 0.85rem; color: var(--wrong);">⚠️ تكرر الخطأ: <b>${q._wrongCount}</b> مرات</span>
+                        <button onclick="window.removeMistake('${q._originalQuiz}', ${q._originalIndex}, this)" 
+                            style="background: white; border: 1px solid var(--wrong); color: var(--wrong); padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; cursor: pointer;">
+                            محو من الأخطاء
+                        </button>
+                    </div>`;
+                }
+
                 const textEl = document.createElement('p');
                 textEl.className = 'question-text';
-                textEl.textContent = q.question;
+                textEl.innerHTML = metaHtml + q.question;
 
                 const optsList = document.createElement('div');
                 optsList.className = 'options-list';
@@ -1252,7 +1411,9 @@
                     item.innerHTML = `
                     <span class="option-key">${oi + 1}</span>
                     <div class="option-radio"></div>
-                    <span class="option-text">${opt.text}</span>
+                    <div class="option-content-wrapper">
+                        <span class="option-text">${opt.text}</span>
+                    </div>
                 `;
                     optsList.appendChild(item);
                 });
@@ -1336,6 +1497,8 @@
                     score++;
                     questionResults.push('correct');
                     document.getElementById(`nav-${qi}`).classList.add('correct-nav');
+
+                    // Note: We DO NOT remove from mistakes automatically on correct answer
                 } else {
                     if (userIdx !== undefined) {
                         document.getElementById(`opt-${qi}-${userIdx}`).classList.add('wrong');
@@ -1345,14 +1508,31 @@
                         card.classList.add('unanswered');
                     }
                     document.getElementById(`nav-${qi}`).classList.add('wrong-nav');
+
+                    // Track mistake
+                    if (currentQuizName === '__MISTAKES__') {
+                        if (q._originalQuiz && q._originalIndex !== undefined) {
+                            MistakesManager.add(q._originalQuiz, q._originalIndex);
+                        }
+                    } else if (currentQuizName) {
+                        if (q._originalIndex !== undefined) {
+                            MistakesManager.add(currentQuizName, q._originalIndex);
+                        }
+                    }
+
+
                 }
 
-                // Show comment if available
-                if (q.comment) {
+                // Show comment only for user's selected answer
+                if (userIdx !== undefined && q.options[userIdx].comment) {
+                    const optEl = document.getElementById(`opt-${qi}-${userIdx}`);
+                    // Ensure we append to the option-content-wrapper
+                    const contentWrapper = optEl.querySelector('.option-content-wrapper') || optEl;
+
                     const commentEl = document.createElement('div');
-                    commentEl.className = 'question-comment';
-                    commentEl.innerHTML = `<strong>💡 توضيح:</strong> ${q.comment}`;
-                    card.appendChild(commentEl);
+                    commentEl.className = 'option-comment-inline';
+                    commentEl.textContent = q.options[userIdx].comment;
+                    contentWrapper.appendChild(commentEl);
                 }
             });
 
@@ -1395,6 +1575,19 @@
             const shuffle = document.getElementById('opt-shuffle').checked;
             startExam(currentQuizName, shuffle);
         }
+
+        // Helper to remove mistake from list
+        window.removeMistake = function (quizName, index, btn) {
+            if (confirm('هل أنت متأكد من حذف هذا السؤال من قائمة الأخطاء؟')) {
+                MistakesManager.remove(quizName, index);
+                if (btn) {
+                    btn.textContent = "تم الحذف";
+                    btn.disabled = true;
+                    btn.style.opacity = "0.5";
+                }
+                // If in mistakes exam, maybe update title count? Not strictly necessary.
+            }
+        };
 
         init();
     </script>
