@@ -1383,6 +1383,7 @@
         }
 
         function startExam(name, shuffle = false) {
+            currentQuizName = name;
             let fullQuestions = [];
 
             if (name === '__MISTAKES__') {
@@ -1433,6 +1434,7 @@
             quizData.forEach((_, i) => {
                 const btn = document.createElement('button');
                 btn.className = 'q-nav-btn';
+                if (answers[i] !== undefined) btn.classList.add('answered');
                 btn.id = `nav-${i}`;
                 btn.textContent = i + 1;
                 btn.onclick = () => document.getElementById(`q-${i}`).scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -1485,6 +1487,7 @@
                 q.options.forEach((opt, oi) => {
                     const item = document.createElement('div');
                     item.className = 'option-item';
+                    if (answers[qi] === oi) item.classList.add('selected');
                     item.id = `opt-${qi}-${oi}`;
                     item.onclick = () => selectOption(qi, oi);
 
