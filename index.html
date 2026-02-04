@@ -1179,6 +1179,84 @@
             }
         };
 
+        const ExamStateManager = {
+            key: 'kahoot_exam_state_v1',
+            save(state) {
+                try {
+                    localStorage.setItem(this.key, JSON.stringify(state));
+                } catch (e) {
+                    console.error("Failed to save exam state", e);
+                }
+            },
+            get() {
+                try {
+                    return JSON.parse(localStorage.getItem(this.key));
+                } catch (e) {
+                    return null;
+                }
+            },
+            clear() {
+                localStorage.removeItem(this.key);
+            },
+            hasState() {
+                return !!localStorage.getItem(this.key);
+            }
+        };
+
+        function saveExamProgress() {
+            if (!currentQuizName) return;
+            ExamStateManager.save({
+                quizName: currentQuizName,
+                quizData: quizData,
+                answers: answers,
+                questionResults: questionResults,
+                isSubmitted: isSubmitted
+            });
+        }
+
+        function restoreExamProgress() {
+            const state = ExamStateManager.get();
+            if (!state) return false;
+
+            if (!state.quizName || !state.quizData) return false;
+
+            currentQuizName = state.quizName;
+            quizData = state.quizData;
+            answers = state.answers || {};
+            questionResults = state.questionResults || [];
+            isSubmitted = state.isSubmitted;
+
+            menuWrapper.classList.add('hidden');
+            examWrapper.classList.add('active');
+
+            if (currentQuizName === '__MISTAKES__') {
+                document.getElementById('exam-title').textContent = 'أخطائي السابقة';
+            } else {
+                document.getElementById('exam-title').textContent = currentQuizName;
+            }
+
+            if (isSubmitted) {
+                document.getElementById('submit-btn-mobile').style.display = 'none';
+                document.getElementById('submit-btn-desktop').style.display = 'none';
+                document.getElementById('score-banner').classList.add('visible');
+                document.getElementById('filter-bar').classList.add('visible');
+                calculateScore();
+            } else {
+                document.getElementById('score-banner').classList.remove('visible');
+                document.getElementById('filter-bar').classList.remove('visible');
+                document.getElementById('submit-btn-mobile').style.display = 'inline-block';
+                document.getElementById('submit-btn-desktop').style.display = 'inline-block';
+            }
+
+            renderQuestions();
+            renderNavGrid();
+            updateProgress();
+            window.scrollTo(0, 0);
+            return true;
+        }
+
+
+
         function renderMenu() {
             quizListEl.innerHTML = '';
 
@@ -1288,6 +1366,7 @@
         }
 
         function goToMenu() {
+            ExamStateManager.clear();
             menuWrapper.classList.remove('hidden');
             examWrapper.classList.remove('active');
             window.scrollTo(0, 0);
@@ -1344,6 +1423,7 @@
 
             menuWrapper.classList.add('hidden');
             examWrapper.classList.add('active');
+            saveExamProgress();
             window.scrollTo(0, 0);
         }
 
@@ -1441,6 +1521,7 @@
             document.getElementById(`nav-${qi}`).classList.add('answered');
 
             updateProgress();
+            saveExamProgress();
         }
 
         function updateProgress() {
@@ -1547,6 +1628,7 @@
             document.getElementById('submit-btn-mobile').style.display = 'none';
             document.getElementById('submit-btn-desktop').style.display = 'none';
 
+            saveExamProgress();
             window.scrollTo(0, 0);
         }
 
@@ -1590,6 +1672,7 @@
         };
 
         init();
+        restoreExamProgress();
     </script>
 </body>
 
